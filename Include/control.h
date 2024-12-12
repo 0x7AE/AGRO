@@ -1,4 +1,7 @@
-#ifndef _CONTROL_H_
+#ifndef CONTROL_H
+
+#define CONTROL_H
+    
 #include <avr/io.h>
 
 
