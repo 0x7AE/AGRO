@@ -1,0 +1,12 @@
+# Ignore the toolchain folder
+/toolchain/
+/Debug/
+/.vscode/*
+
+# Ignore build files
+/build/
+
+
+# Ignore specific file types
+*.log
+*.swp
