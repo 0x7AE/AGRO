@@ -2,7 +2,7 @@
 #define F_CPU 16000000ul
 #endif
 #include <util\delay.h>
-#include "h_bridge.h"
+#include "lib\h_bridge.h"
 #include "servo.h"
 #include "input.h"
 #include <avr\interrupt.h>
