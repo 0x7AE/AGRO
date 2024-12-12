@@ -1,5 +1,5 @@
 # Ignore the toolchain folder
-/toolchain/
+/toolchain/*
 /Debug/
 /.vscode/*
 
