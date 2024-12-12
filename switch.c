@@ -1,6 +1,8 @@
 // Include the necessary AVR headers
 #include <avr/io.h>
 #include <util/delay.h>
+#include "include/math.h"
+#include "include\h_bridge.h"
 
 // Define pins for the limit switches
 #define LIMIT_SWITCH1_PIN PD2  // Pin 2 on PORTD
