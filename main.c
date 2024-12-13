@@ -11,7 +11,7 @@
 
 #include "h_bridge.c"
 #include "math.c"
-#include "control.c"
+#include "switch.c"
 
 
 

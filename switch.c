@@ -4,34 +4,64 @@
 #include "include/math.h"
 #include "include\h_bridge.h"
 
+#include "include\switch.h"
+
 // Define pins for the limit switches
-#define LIMIT_SWITCH1_PIN PD2  // Pin 2 on PORTD
-#define LIMIT_SWITCH2_PIN PD3  // Pin 3 on PORTD
+// #define LIMIT_SWITCH1_PIN PD2  // Pin 2 on PORTD
+// #define LIMIT_SWITCH2_PIN PD3  // Pin 3 on PORTD
 
-// Define pin for the LED
-#define LED_PIN PB7  // Pin 7 on PORTB (Change from PB0 to PB7)
+// // Define pin for the LED
+// #define LED_PIN PB7  // Pin 7 on PORTB (Change from PB0 to PB7)
 
 
-void init_limit_switches() {
-    // Set pins as inputs
-    DDRD &= ~(1 << LIMIT_SWITCH1_PIN); // Clear DDRD bit for LIMIT_SWITCH1_PIN
-    DDRD &= ~(1 << LIMIT_SWITCH2_PIN); // Clear DDRD bit for LIMIT_SWITCH2_PIN
 
-    // Enable internal pull-up resistors
-    PORTD |= (1 << LIMIT_SWITCH1_PIN); // Set PORTD bit for LIMIT_SWITCH1_PIN
-    PORTD |= (1 << LIMIT_SWITCH2_PIN); // Set PORTD bit for LIMIT_SWITCH2_PIN
+// void init_limit_switches() {
+//     // Set pins as inputs
+//     DDRD &= ~(1 << LIMIT_SWITCH1_PIN); // Clear DDRD bit for LIMIT_SWITCH1_PIN
+//     DDRD &= ~(1 << LIMIT_SWITCH2_PIN); // Clear DDRD bit for LIMIT_SWITCH2_PIN
+
+//     // Enable internal pull-up resistors
+//     PORTD |= (1 << LIMIT_SWITCH1_PIN); // Set PORTD bit for LIMIT_SWITCH1_PIN
+//     PORTD |= (1 << LIMIT_SWITCH2_PIN); // Set PORTD bit for LIMIT_SWITCH2_PIN
+// }
+
+// void init_led() {
+//     // Set LED pin as output
+//     DDRB |= (1 << LED_PIN); // Set DDRB bit for LED_PIN
+// }
+
+// void blink_led() {
+//     // Toggle LED state
+//     PORTB ^= (1 << LED_PIN); // XOR to toggle the bit
+//     _delay_ms(500); // Delay to make the blinking visible
+// }
+
+
+void initSwitches() {
+    DDRD &= ~(1<< S1);
+    DDRD &= ~(1<< S2);
+    DDRD &= ~(1<< S3);
+
+    PORTD |= (1 << S1);
+    PORTD |= (1 << S2);
+    PORTD |= (1 << S3);
+
 }
 
-void init_led() {
-    // Set LED pin as output
-    DDRB |= (1 << LED_PIN); // Set DDRB bit for LED_PIN
+void initLed() {
+    DDRH |= (1 << D1);
+    DDRH |= (1 << D2);
+    DDRH  |= (1 << D3);
+
+
 }
 
-void blink_led() {
-    // Toggle LED state
-    PORTB ^= (1 << LED_PIN); // XOR to toggle the bit
-    _delay_ms(500); // Delay to make the blinking visible
+void activateLed() {
+
+
+
 }
+
 
 int main(void) {
     // Initialize the limit switches and LEDs   

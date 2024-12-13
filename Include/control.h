@@ -1,26 +1,25 @@
 #ifndef CONTROL_H
 
 #define CONTROL_H
-    
+
 #include <avr/io.h>
 
 
-typedef bool (*AGRO_EVENT)(void);
-typedef void (*AGRO_ACTION )(void);
+typedef int AGRO_EVENT;
+typedef void AGRO_ACTION;
 
-typedef enum AGRO_STATE {
+enum AGRO_STATE {
     MOVINGx,  MOVINGy,  MOVINGz, PICKING, STOPPED
-} 
+};
 
-typedef struct AGRO_EVENTS {
-     AGRO_STATE current;
-     AGRO_EVENT ledOn;
+struct AGRO_EVENTS {
+     AGRO_EVENT ledOn;r
      AGRO_EVENT switchOff;
-}
+};
  
-bool noEvent();
-bool noAction();
-bool isLedOn();
+int noEvent(); c dx
+int noAction();
+int isLedOn();
 void turnLedOn();
 
 #endif
