@@ -44,7 +44,7 @@ ISR(TIMER0_COMPB_vect)
 	}
 }
 
-void init_h_bridge(void)
+void init_h_bridges(void)
 {
 	// Config pins as output
 	DDR_RPWM |= (1<<PIN_RPWM);

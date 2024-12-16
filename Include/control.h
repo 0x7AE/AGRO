@@ -12,12 +12,8 @@ enum AGRO_STATE {
     MOVINGx,  MOVINGy,  MOVINGz, PICKING, STOPPED
 };
 
-struct AGRO_EVENTS {
-     AGRO_EVENT ledOn;r
-     AGRO_EVENT switchOff;
-};
  
-int noEvent(); c dx
+int noEvent(); 
 int noAction();
 int isLedOn();
 void turnLedOn();

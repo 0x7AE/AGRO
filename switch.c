@@ -52,40 +52,58 @@ void initLed() {
     DDRH |= (1 << D1);
     DDRH |= (1 << D2);
     DDRH  |= (1 << D3);
-
-
 }
+
+
 
 void activateLed() {
 
-
-
-}
-
-
-int main(void) {
-    // Initialize the limit switches and LEDs   
-    init_limit_switches();
-    init_led();
-
-    // Main loop
-    while (1) {
-        // Read the state of the limit switches
-       if (!(PIND & (1 << LIMIT_SWITCH1_PIN)) || !(PIND & (1 << LIMIT_SWITCH2_PIN))) {
-            // Either limit switch is pressed
-            blink_led(); // Blink LED
-        } else {
-            // No switch pressed, turn off the LED
-            PORTB &= ~(1 << LED_PIN); // Clear LED_PIN bit to turn off the LED
-        }
-
-        if (!(PIND & (1 << LIMIT_SWITCH2_PIN))) { // Active low, switch pressed
-            // Limit switch 2 triggered
-            blink_led(); // Blink LED when limit switch 2 is pressed
-        }
-
-        _delay_ms(100); // Delay for debouncing
+    if(!((PIND &  1 << S1))) {
+        PORTH ^= (1 << D1);
+        PORTH ^= ~(1 << D2);
+        PORTH ^= ~(1 << D3);
     }
 
-    return 0;
+    if(!((PIND &  1 << S2)))
+    {
+        PORTH ^= ~(1 << D1);
+        PORTH ^= (1 << D2);
+        PORTH ^= ~(1 << D3);
+    }
+
+    if(!((PIND &  1 << S3)))
+    {
+        PORTH ^= (1 << D1);
+        PORTH ^= ~(1 << D2);
+        PORTH ^= ~(1 << D3);    
+    }
+
 }
+
+
+// int main(void) {
+//     // Initialize the limit switches and LEDs   
+//     init_limit_switches();
+//     init_led();
+
+//     // Main loop
+//     while (1) {
+//         // Read the state of the limit switches
+//        if (!(PIND & (1 << LIMIT_SWITCH1_PIN)) || !(PIND & (1 << LIMIT_SWITCH2_PIN))) {
+//             // Either limit switch is pressed
+//             blink_led(); // Blink LED
+//         } else {
+//             // No switch pressed, turn off the LED
+//             PORTB &= ~(1 << LED_PIN); // Clear LED_PIN bit to turn off the LED
+//         }
+
+//         if (!(PIND & (1 << LIMIT_SWITCH2_PIN))) { // Active low, switch pressed
+//             // Limit switch 2 triggered
+//             blink_led(); // Blink LED when limit switch 2 is pressed
+//         }
+
+//         _delay_ms(100); // Delay for debouncing
+//     }
+
+//     return 0;
+// }

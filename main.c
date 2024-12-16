@@ -14,7 +14,6 @@
 #include "switch.c"
 
 
-
 int main(void)
 {	
 	init_h_bridge();

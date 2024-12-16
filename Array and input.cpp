@@ -13,7 +13,7 @@ int main() {
         printf("Starting Position %d (row column): ", i + 1);
         scanf("%d %d", &start_positions[i][0], &start_positions[i][1]);
     }
-
+ s
     for (int i = 0; i < 3; i++) {
         int row = start_positions[i][0];
         int col = start_positions[i][1];
