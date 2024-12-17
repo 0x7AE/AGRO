@@ -22,7 +22,7 @@ int main(void)
 		
 		for (int i = 0; i < 100; i++)
 		{
-			h_bridge_set_percentage(i);
+			h_bridge_set_percentage(i); 
 			_delay_ms(100);
 		}
 		for (int i = 100; i > 0; i--)
