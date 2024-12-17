@@ -18,7 +18,7 @@ int main(void)
 {	
 	// init_h_bridges();
 
-	initSwitbnbn 
+	initSwitches();
  	while (1)
 	{
 		
