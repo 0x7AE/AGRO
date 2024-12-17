@@ -40,7 +40,7 @@
 #define DDR_C_LPWM	DDRH
 
 
-void init_h_bridge(void);
-void h_bridge_set_percentage(signed char percentage);
+void init_h_bridges(void);
+void motor_set_speed_percentage(signed char percentage);
 
 #endif /* _H_BRIDGE_H_ */

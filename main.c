@@ -7,7 +7,7 @@
 
 #include "include/h_bridge.h"
 #include "include/math.h"
-#include "include/control.h"
+#include "include/state.h"
 
 #include "h_bridge.c"
 #include "math.c"
@@ -16,7 +16,7 @@
 
 int main(void)
 {	
-	init_h_bridge();
+	init_h_bridges();
  	while (1)
 	{
 		

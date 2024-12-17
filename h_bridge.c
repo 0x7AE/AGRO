@@ -13,18 +13,30 @@ ISR(TIMER0_OVF_vect)
 {
 	if (OCR0A == 0 && OCR0B == 0)
 	{
-		PORT_RPWM &= ~(1<<PIN_RPWM);
-		PORT_LPWM &= ~(1<<PIN_LPWM);
+		PORT_A_RPWM &= ~(1<<PIN_A_RPWM);
+		PORT_A_LPWM &= ~(1<<PIN_A_LPWM);
+		PORT_B_RPWM &= ~(1<<PIN_B_RPWM);
+		PORT_B_LPWM &= ~(1<<PIN_B_LPWM);
+		PORT_C_RPWM &= ~(1<<PIN_C_RPWM);
+		PORT_C_LPWM &= ~(1<<PIN_C_LPWM);
 	}
 	else if (OCR0A != 0)
 	{
-		PORT_LPWM &= ~(1<<PIN_LPWM);
-		PORT_RPWM |= (1<<PIN_RPWM);
+		PORT_A_LPWM &= ~(1<<PIN_A_LPWM);
+		PORT_A_RPWM |= (1<<PIN_A_RPWM);
+		PORT_B_LPWM &= ~(1<<PIN_B_LPWM);
+		PORT_B_RPWM |= (1<<PIN_B_RPWM);
+		PORT_C_LPWM &= ~(1<<PIN_C_LPWM);
+		PORT_C_RPWM |= (1<<PIN_C_RPWM);
 	}
 	else if (OCR0B != 0)
 	{
-		PORT_RPWM &= ~(1<<PIN_RPWM);
-		PORT_LPWM |= (1<<PIN_LPWM);
+		PORT_A_LPWM &= ~(1<<PIN_A_LPWM);
+		PORT_A_RPWM |= (1<<PIN_A_RPWM);
+		PORT_B_LPWM &= ~(1<<PIN_B_LPWM);
+		PORT_B_RPWM |= (1<<PIN_B_RPWM);
+		PORT_C_LPWM &= ~(1<<PIN_C_LPWM);
+		PORT_C_RPWM |= (1<<PIN_C_RPWM);
 	}
 }
 
@@ -32,7 +44,9 @@ ISR(TIMER0_COMPA_vect)
 {
 	if (OCR0A != 255)
 	{
-		PORT_RPWM &= ~(1<<PIN_RPWM);
+		PORT_A_RPWM &= ~(1<<PIN_A_RPWM);
+		PORT_B_RPWM &= ~(1<<PIN_B_RPWM);
+		PORT_C_RPWM &= ~(1<<PIN_C_RPWM);
 	}
 }
 
@@ -40,21 +54,30 @@ ISR(TIMER0_COMPB_vect)
 {
 	if (OCR0B != 255)
 	{
-		PORT_LPWM &= ~(1<<PIN_LPWM);
+		PORT_A_LPWM &= ~(1<<PIN_A_LPWM);
+		PORT_B_RPWM &= ~(1<<PIN_B_RPWM);
+		PORT_C_RPWM &= ~(1<<PIN_C_RPWM);
 	}
 }
 
 void init_h_bridges(void)
 {
 	// Config pins as output
-	DDR_RPWM |= (1<<PIN_RPWM);
-	DDR_LPWM |= (1<<PIN_LPWM);
+	DDR_A_RPWM |= (1<<PIN_A_RPWM);
+	DDR_A_LPWM |= (1<<PIN_A_LPWM);
+	DDR_B_RPWM |= (1<<PIN_B_RPWM);
+	DDR_B_LPWM |= (1<<PIN_B_LPWM);
+	DDR_C_RPWM |= (1<<PIN_C_RPWM);
+	DDR_C_LPWM |= (1<<PIN_C_LPWM);
 
 	// Output low
-	PORT_RPWM &= ~(1<<PIN_RPWM);
-	PORT_LPWM &= ~(1<<PIN_LPWM);
+	PORT_A_RPWM &= ~(1<<PIN_A_RPWM);
+	PORT_A_LPWM &= ~(1<<PIN_A_LPWM);
+	PORT_B_RPWM &= ~(1<<PIN_B_RPWM);
+	PORT_B_LPWM &= ~(1<<PIN_B_LPWM);
+	PORT_C_RPWM &= ~(1<<PIN_C_RPWM);
+	PORT_C_LPW0M &= ~(1<<PIN_C_LPWM);
 
-	// Use mode 0, clkdiv = 64
 	TCCR0A = 0;
 	TCCR0B = (0<<CS02) | (1<<CS01) | (1<<CS00);
 
@@ -68,7 +91,7 @@ void init_h_bridges(void)
 	sei();
 }
 
-void h_bridge_set_percentage(signed char percentage)
+void motor_set_speed_percentage(signed char percentage)
 {
 	if (percentage >= -100 && percentage <= 100)
 	{

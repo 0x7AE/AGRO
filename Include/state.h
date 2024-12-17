@@ -1,6 +1,6 @@
-#ifndef CONTROL_H
+#ifndef STATE_H
 
-#define CONTROL_H
+#define STATE_H
 
 #include <avr/io.h>
 
