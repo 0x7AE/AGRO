@@ -5,43 +5,45 @@
 #include <avr/interrupt.h>
 #include <avr/io.h>
 
-#include "include/h_bridge.h"
+// #include "include/h_bridge.h"
 #include "include/math.h"
 #include "include/state.h"
 
-#include "h_bridge.c"
+// #include "h_bridge.c"
 #include "math.c"
 #include "switch.c"
 
 
 int main(void)
 {	
-	init_h_bridges();
+	// init_h_bridges();
+
+	initSwitbnbn 
  	while (1)
 	{
 		
-		for (int i = 0; i < 100; i++)
-		{
-			h_bridge_set_percentage(i); 
-			_delay_ms(100);
-		}
-		for (int i = 100; i > 0; i--)
-		{
-			h_bridge_set_percentage(i);
-			_delay_ms(100);
-		}
-		_delay_ms(1000);
-		for (int i = 0; i > -100; i--)
-		{
-			h_bridge_set_percentage(i);
-			_delay_ms(100);
-		}
-		for (int i = -100; i < 0; i++)
-		{
-			h_bridge_set_percentage(i);
-			_delay_ms(100);
-		}
-		_delay_ms(1000);
+		// for (int i = 0; i < 100; i++)
+		// {
+		// 	h_bridge_set_percentage(i); 
+		// 	_delay_ms(100);
+		// }
+		// for (int i = 100; i > 0; i--)
+		// {
+		// 	h_bridge_set_percentage(i);
+		// 	_delay_ms(100);
+		// }
+		// _delay_ms(1000);
+		// for (int i = 0; i > -100; i--)
+		// {
+		// 	h_bridge_set_percentage(i);
+		// 	_delay_ms(100);
+		// }
+		// for (int i = -100; i < 0; i++)
+		// {
+		// 	h_bridge_set_percentage(i);
+		// 	_delay_ms(100);
+		// }
+		// _delay_ms(1000);
 	}
 
 	return 0;
