@@ -2,3 +2,14 @@
 
 
 
+void initMagnet() {
+        
+}
+
+void magnetOn() {
+
+}
+
+void magnetOff() {
+    
+}
