@@ -2,8 +2,10 @@
  * h_bridge.h - XvR 2020
  */
 
-#ifndef _H_BRIDGE_H_
-#define _H_BRIDGE_H_
+#ifndef MOTORS_H
+#define MOTORS_H
+
+#include <avr/io.h>
 
 // These pins are available on the shield via the header:
 //
@@ -31,19 +33,18 @@
 #define PIN_B_LPWM	PB4 // Digital pin 10 on Mega
 #define DDR_B_LPWM	DDRB
 
-#define PORTB_C_RPWM	PORTH
+#define PORTH_C_RPWM	PORTH
 #define PIN_C_RPWM	PH6 // Digital pin 9 on Mega
 #define DDR_C_RPWM	DDRH
 
-#define PORTB_C_LPWM PORTH
-#define PIN_C_LPWM	PH5 // Digital pin 8 on Mega     k
+#define PORTH_C_LPWM PORTH
+#define PIN_C_LPWM	PH5 // Digital pin 8 on Mega
 #define DDR_C_LPWM	DDRH
 
+// H-Bridge control function declarations
+extern void init_h_bridges(void);
+extern void disable_h_bridges(void);
+extern void motor_set_speed_percentage(signed char percentage);
 
-extern volatile uint8_t stop_flag;
-
-void init_h_bridges(void);
-void disable_h_bridges(void);
-void motor_set_speed_percentage(signed char percentage);
 
 #endif /* _H_BRIDGE_H_ */
