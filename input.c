@@ -7,7 +7,7 @@ int main()
     int XY = 0;
     int LocationType = 0;
 
-    int Coordinates[3][2][2]; //[Coordinate 1, 2 or 3][X or Y][Location or Destination]
+    int Coordinates[NUMBEROFBLOCKS][2][2]; //[Coordinate 1, 2 or 3][X or Y][Location or Destination]
     int CoordinatesFull[2][2];
 
     switch(NumpadInput)
