@@ -18,6 +18,7 @@ int main()
             if(CoordinatesFull[XY][LocationType] <= NUMBEROFBLOCKS)
             {
                 Coordinates[CoordinatesFull[XY][LocationType]][XY][LocationType] = 1;
+                CoordinatesFull[XY][LocationType]++;
             }
             break;
         }
@@ -27,6 +28,7 @@ int main()
             if(CoordinatesFull[XY][LocationType] <= NUMBEROFBLOCKS)
             {
                 Coordinates[CoordinatesFull[XY][LocationType]][XY][LocationType] = 2;
+                CoordinatesFull[XY][LocationType]++;
             }
             break;
         }
@@ -36,6 +38,7 @@ int main()
             if(CoordinatesFull[XY][LocationType] <= NUMBEROFBLOCKS)
             {
                 Coordinates[CoordinatesFull[XY][LocationType]][XY][LocationType] = 3;
+                CoordinatesFull[XY][LocationType]++;
             }
             break;
         }
@@ -51,6 +54,7 @@ int main()
             if(CoordinatesFull[XY][LocationType] <= NUMBEROFBLOCKS)
             {
                 Coordinates[CoordinatesFull[XY][LocationType]][XY][LocationType] = 4;
+                CoordinatesFull[XY][LocationType]++;
             }
             break;
         }
@@ -60,6 +64,7 @@ int main()
             if(CoordinatesFull[XY][LocationType] <= NUMBEROFBLOCKS)
             {
                 Coordinates[CoordinatesFull[XY][LocationType]][XY][LocationType] = 5;
+                CoordinatesFull[XY][LocationType]++;
             }
             break;
         }
