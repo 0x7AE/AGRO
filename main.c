@@ -9,23 +9,18 @@
 #include "magnet.c"
 #include "pathfinding.c"
 #include "motors.c"
-#include "keypad.c"
+// #include "keypad.c"
 
-
-void initRobot(void) {
-
-}
-
-void kill(void) {
-
-}
 
 int main(void) {
 
+    init_h_bridges();   
 
+    calibrate(1, 1);
+
+    findpath(1, 1, 4, 4);
 
     
-
     return 0;
 
 }

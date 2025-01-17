@@ -8,13 +8,13 @@
 #define VERT2 PB0 // Digital 19
 #define VERT3 PB3 // Digital 22
 #define VERT4 PB2 // Digital 21
-#define VERT5 PK0 // Digital 89
-#define HOR1 PK1 // Digital 88
-#define HOR2 PK2 // Digital 87
-#define HOR3 PK3 // Digital 86
-#define HOR4 PK4 // Digital 85
-#define HOR5 PK5 // Digital 84
-#define MAG1 PK6 // Digital 83
+#define VERT5 PK0 // Digital A8
+#define HOR1 PK1 // Digital A9
+#define HOR2 PK2 // Digital A10
+#define HOR3 PK3 // Digital A11
+#define HOR4 PK4 // Digital A12
+#define HOR5 PK5 // Digital A13
+#define MAG1 PK6 // Digital A14
 
 
 // Magnet pin definitions

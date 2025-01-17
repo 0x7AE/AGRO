@@ -14,12 +14,12 @@
 
 
 // LED pin
-#define LED_PIN1        PB7
-#define LED_PIN2        PB6
-#define LED_PIN3        PB5
-#define LED_PIN4        PB4
-#define LED_PORT        PORTB
-#define LED_DDR         DDRB
+// #define LED_PIN1        PB7
+// #define LED_PIN2        PB6
+// #define LED_PIN3        PB5
+// #define LED_PIN4        PB4
+// #define LED_PORT        PORTB
+// #define LED_DDR         DDRB
 
 // Keypad lay out mapping
 unsigned char keypad[4][4] = {

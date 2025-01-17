@@ -1,4 +1,5 @@
 #include <avr/io.h>
+#include <avr/interrupt.h>
 #include "include/motors.h"
 
 ISR(TIMER0_OVF_vect)
@@ -52,23 +53,54 @@ ISR(TIMER0_COMPB_vect)
     }
 }
 
-void init_h_bridges()
-{
-    // Configure pins as output
+void init_motor_a() {
+    // Configure Motor A pins as output
     DDR_A_RPWM |= (1 << PIN_A_RPWM);
     DDR_A_LPWM |= (1 << PIN_A_LPWM);
-    DDR_B_RPWM |= (1 << PIN_B_RPWM);
-    DDR_B_LPWM |= (1 << PIN_B_LPWM);
-    DDR_C_RPWM |= (1 << PIN_C_RPWM);
-    DDR_C_LPWM |= (1 << PIN_C_LPWM);
-
     // Set outputs to low
     PORTB_A_RPWM &= ~(1 << PIN_A_RPWM);
     PORTB_A_LPWM &= ~(1 << PIN_A_LPWM);
+}
+
+void init_motor_b() {
+    // Configure Motor B pins as output
+    DDR_B_RPWM |= (1 << PIN_B_RPWM);
+    DDR_B_LPWM |= (1 << PIN_B_LPWM);
+    // Set outputs to low
     PORTB_B_RPWM &= ~(1 << PIN_B_RPWM);
     PORTB_B_LPWM &= ~(1 << PIN_B_LPWM);
+}
+
+void init_motor_c() {
+    // Configure Motor C pins as output
+    DDR_C_RPWM |= (1 << PIN_C_RPWM);
+    DDR_C_LPWM |= (1 << PIN_C_LPWM);
+    // Set outputs to low
     PORTH_C_RPWM &= ~(1 << PIN_C_RPWM);
     PORTH_C_LPWM &= ~(1 << PIN_C_LPWM);
+}
+
+void disable_motor_a() {
+    PORTB_A_RPWM &= ~(1 << PIN_A_RPWM);
+    PORTB_A_LPWM &= ~(1 << PIN_A_LPWM);
+}
+
+void disable_motor_b() {
+    PORTB_B_RPWM &= ~(1 << PIN_B_RPWM);
+    PORTB_B_LPWM &= ~(1 << PIN_B_LPWM);
+}
+
+void disable_motor_c() {
+    PORTH_C_RPWM &= ~(1 << PIN_C_RPWM);
+    PORTH_C_LPWM &= ~(1 << PIN_C_LPWM);
+}
+
+void init_h_bridges()
+{
+    // Configure pins as output
+    init_motor_a();
+    init_motor_b();
+    init_motor_c();
 
     // Configure Timer0
     TCCR0A = 0;
@@ -86,30 +118,31 @@ void init_h_bridges()
 
 void disable_h_bridges()
 {
-    // Set all H-bridge pins to low to disable them
-    PORTB_A_RPWM &= ~(1 << PIN_A_RPWM);
-    PORTB_A_LPWM &= ~(1 << PIN_A_LPWM);
-    PORTB_B_RPWM &= ~(1 << PIN_B_RPWM);
-    PORTB_B_LPWM &= ~(1 << PIN_B_LPWM);
-    PORTH_C_RPWM &= ~(1 << PIN_C_RPWM);
-    PORTH_C_LPWM &= ~(1 << PIN_C_LPWM);
+    disable_motor_a();
+    disable_motor_b();
+    disable_motor_c();
+   
 }
 
-void motor_set_speed_percentage(signed char percentage)
-{
-    if (percentage >= -100 && percentage <= 100)
-    {
-        if (percentage >= 0)
-        {
-            // Disable LPWM, calculate RPWM
+void motor_set_speed_percentage(MotorID motor, signed char percentage) {
+    MotorConfig config = motors[motor]; // Get the motor configuration
+
+    if (percentage >= -100 && percentage <= 100) {
+        if (percentage >= 0) {
+            // Forward: Disable LPWM, enable RPWM
+            *(config.port_lpwm) &= ~(1 << config.pin_lpwm);
+            *(config.port_rpwm) |= (1 << config.pin_rpwm);
+
             OCR0B = 0;
             OCR0A = (255 * percentage) / 100;
-        }
-        else
-        {
-            // Disable RPWM, calculate LPWM
+        } else {
+            // Backward: Disable RPWM, enable LPWM
+            *(config.port_rpwm) &= ~(1 << config.pin_rpwm);
+            *(config.port_lpwm) |= (1 << config.pin_lpwm);
+
             OCR0A = 0;
             OCR0B = (255 * -percentage) / 100;
         }
     }
 }
+
