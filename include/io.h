@@ -4,10 +4,10 @@
 #include <avr/io.h>
 
 // Limit switches for positions of x-axis
-#define VERT1 PB1 //  Digital 20
-#define VERT2 PB0 // Digital 19
-#define VERT3 PB3 // Digital 22
-#define VERT4 PB2 // Digital 21
+#define VERT1 PB1 //  Digital 52
+#define VERT2 PB0 // Digital 53
+#define VERT3 PB3 // Digital 50
+#define VERT4 PB2 // Digital 51
 #define VERT5 PK0 // Digital A8
 #define HOR1 PK1 // Digital A9
 #define HOR2 PK2 // Digital A10
@@ -18,7 +18,7 @@
 
 
 // Magnet pin definitions
-#define MAGNET PA0 // Digital 78
+#define MAGNET PA0 // Digital 22
 
 // Interface pins
 // #define X PA1
